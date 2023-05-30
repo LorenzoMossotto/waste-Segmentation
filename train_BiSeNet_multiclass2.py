@@ -51,9 +51,9 @@ def main():
     #criterion = torch.nn.BCEWithLogitsLoss().cuda() # Binary Classification
     #criterion = CrossEntropyLoss2d()
     #criterion=CustomLoss()
-    criterion = FocalLossV2()
-    #class_weights = torch.tensor([1.0, 2.0, 1.5, 2.0, 0.5])
-    #criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
+    #criterion = FocalLossV2()
+    class_weights = torch.tensor([1.0, 2.0, 1.5, 2.0, 0.5])
+    criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
     criterion.cuda()
 
     optimizer = optim.Adam(net.parameters(), lr=cfg.TRAIN.LR, weight_decay=cfg.TRAIN.WEIGHT_DECAY)
